@@ -1,17 +1,12 @@
-# heart_box_app
+# 心事匣 (Heart Box)
 
-A new Flutter project.
+本地心情日记 Flutter MVP，仓库：[heart-box-app](https://github.com/wangmiao033/heart-box-app)。
 
-## Getting Started
+## 开发
 
-This project is a starting point for a Flutter application.
+```bash
+flutter pub get
+flutter run
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+首次使用 Flutter 可参考：[官方文档](https://docs.flutter.dev/get-started/install)。

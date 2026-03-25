@@ -54,3 +54,39 @@ flutter build web
 | 应用锁 / PIN / 生物识别 | 与桌面/手机**行为可能不同**，正式验收请以 **Windows / Android / iOS** 为准 |
 
 **结论：可以测试。** 日常 Web 快速验 UI 用 `flutter run -d web-server` 即可；完整隐私与锁相关能力建议在原生目标上再验一遍。
+
+---
+
+## 用 Vercel 临时在线测（固定网址）
+
+可以，**有一个稳定的 `https://xxx.vercel.app` 比本机端口更方便给别人打开**；但要满足两点，否则会像你遇到的 **404**：
+
+1. **线上必须是 Flutter 打出来的 Web 包**（`build/web/` 里的 `index.html`、`main.dart.js`、`assets/` 等），不能只把 **Dart 源码**当静态站部署。  
+2. **前端路由**（`go_router`）需要让所有「非静态文件」回退到 `index.html`，仓库根目录已提供 **`vercel.json`**。
+
+### 推荐流程（本地构建 + 上传 `build/web`）
+
+在项目根目录：
+
+```bash
+flutter build web
+```
+
+把 **`vercel.json` 复制到 `build/web/`**（与 `index.html` 同级），例如 PowerShell：
+
+```powershell
+Copy-Item vercel.json build\web\vercel.json
+cd build\web
+npx vercel --prod
+```
+
+（需已安装 Node 以便 `npx vercel`，或安装 [Vercel CLI](https://vercel.com/docs/cli) 后执行 `vercel --prod`。）
+
+### 若用 GitHub 连接 Vercel
+
+默认环境 **没有 Flutter**，一般不会自动执行 `flutter build web`。要么：
+
+- 用上面的方式 **本地 build 后只部署 `build/web`**，要么  
+- 在仓库里加 **GitHub Actions**（安装 Flutter → `build web` → 再推到 Vercel），需要配置 `VERCEL_TOKEN` 等，比本地部署多一步。
+
+**总结：** 用 Vercel 测可以、也更「稳定」给别人发链接；**当前 404** 多半是 **没部署 `build/web` 或缺少 SPA 配置**。按上面复制 `vercel.json` 到 `build/web` 再部署即可。

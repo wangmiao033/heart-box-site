@@ -51,3 +51,6 @@ app.*.map.json
 **/key.properties
 *.jks
 *.keystore
+
+# Vercel CLI（vercel link 生成本地 ID，勿提交 token）
+.vercel/

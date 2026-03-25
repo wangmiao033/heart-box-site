@@ -90,3 +90,31 @@ npx vercel --prod
 - 在仓库里加 **GitHub Actions**（安装 Flutter → `build web` → 再推到 Vercel），需要配置 `VERCEL_TOKEN` 等，比本地部署多一步。
 
 **总结：** 用 Vercel 测可以、也更「稳定」给别人发链接；**当前 404** 多半是 **没部署 `build/web` 或缺少 SPA 配置**。按上面复制 `vercel.json` 到 `build/web` 再部署即可。
+
+### 仍 404：GitHub 连 Vercel 时默认不会跑 `flutter build web`
+
+只把代码推到 GitHub、让 Vercel「自动部署」，**不会**生成 `build/web`，线上就没有真正的 Web 包 → **404**。
+
+仓库已包含 **GitHub Actions**（`.github/workflows/deploy-vercel-web.yml`）：在云端 `flutter build web` 后把 **`build/web`** 部署到 Vercel。
+
+**你需要做的：**
+
+1. **Vercel** → Account Settings → **Tokens**，新建并复制 **Token**。  
+2. 在本机项目根目录执行一次（需已 [安装 Vercel CLI](https://vercel.com/docs/cli) 并已登录）：
+   ```bash
+   vercel link
+   ```
+   选现有项目 `heart-box-app`，完成后打开 **`.vercel/project.json`**，里面有 **`projectId`** 和 **`orgId`**。  
+3. 打开 GitHub 仓库 → **Settings → Secrets and variables → Actions → New repository secret**，添加：
+
+   | Name | 值 |
+   |------|-----|
+   | `VERCEL_TOKEN` | 步骤 1 的 Token |
+   | `VERCEL_ORG_ID` | `project.json` 里的 `orgId` |
+   | `VERCEL_PROJECT_ID` | `project.json` 里的 `projectId` |
+
+4. **避免重复部署**：在 Vercel 该项目 → **Settings → Git** → **Ignored Build Step**，命令填 **`exit 1`**（让 Vercel **不要**对每次 push 自己做一次无效构建）；**真正上线只走 GitHub Actions**。
+
+5. 推送任意提交到 `main`，或到 GitHub **Actions** 里手动 **Run workflow**。成功后刷新 `heart-box-app.vercel.app`。
+
+`.vercel/` 已写入 `.gitignore`，请勿把 Token 提交进仓库。

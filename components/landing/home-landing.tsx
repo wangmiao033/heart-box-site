@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { AmbientOrbs } from "./ambient-orbs";
 import { FadeIn } from "./fade-in";
-import { screenshotShots } from "@/lib/screenshots_data";
 
 const features = [
   {
@@ -158,36 +157,6 @@ export function HomeLanding() {
             </p>
           </div>
         </FadeIn>
-      </section>
-
-      {/* 产品展示：纯文字 */}
-      <section className="px-5 py-12 md:px-8 md:py-16">
-        <div className="mx-auto max-w-6xl">
-          <FadeIn>
-            <h2 className="text-2xl font-semibold text-ink md:text-3xl">产品展示</h2>
-            <p className="mt-2 text-sub">在界面里，感受安静与秩序。</p>
-          </FadeIn>
-          <FadeIn delay={0.06} className="mt-10">
-            <ul className={`${glassCard} divide-y divide-white/30 px-8 py-2 md:px-10`}>
-              {screenshotShots.map((shot) => (
-                <li
-                  key={shot.alt}
-                  className="py-5 text-[15px] leading-relaxed text-sub md:py-5"
-                >
-                  {shot.caption}
-                </li>
-              ))}
-            </ul>
-          </FadeIn>
-          <p className="mt-8 text-center md:text-left">
-            <Link
-              href="/screenshots"
-              className="text-sm text-brand/90 underline-offset-4 hover:underline"
-            >
-              需要看图时，可前往产品截图页 →
-            </Link>
-          </p>
-        </div>
       </section>
 
       {/* Download */}

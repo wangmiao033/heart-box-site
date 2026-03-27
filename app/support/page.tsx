@@ -1,81 +1,96 @@
-import { FaqSection } from "@/components/faq_section";
-import { buildMetadata } from "@/lib/seo";
-import { siteConfig } from "@/lib/site_config";
 import Link from "next/link";
+import {
+  LegalDocumentPage,
+  legalStyles as ls,
+} from "@/components/layout/legal-document-page";
+import { buildMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils/cn";
 
 export const metadata = buildMetadata({
   title: "用户支持",
   description:
-    "心事匣用户支持：常见问题、账号与数据、反馈渠道与联系邮箱。",
+    "心事匣用户支持：常见问题、问题反馈方式、响应时间及建议与合作联系邮箱。",
   path: "/support",
 });
 
-const faqItems = [
-  {
-    q: "心事匣是做什么的？",
-    a: "一款偏轻量的心情与日记应用，强调本地优先、低打扰，帮助你记录与回看，而不是社交分享。",
-  },
-  {
-    q: "数据存在哪里？",
-    a: "默认以设备本地为主。若你使用账号或云同步（以应用内是否提供为准），部分数据会经加密同步至服务器，详见隐私政策。",
-  },
-  {
-    q: "草稿会丢吗？",
-    a: "应用会在编辑过程中尽量自动保存草稿，降低意外退出的损失。仍建议在网络与电量稳定时完成重要内容的确认。",
-  },
-  {
-    q: "如何反馈问题或建议？",
-    a: `请发送邮件至 ${siteConfig.contactEmail}，附上设备型号、系统版本、应用版本与复现步骤，便于我们排查。`,
-  },
-  {
-    q: "如何找回账号？",
-    a: "若已上线账号体系，请使用应用内「忘记密码」或绑定手机/邮箱找回。若当前版本未开放账号，则无需找回；后续开放时会补充本说明。",
-  },
-  {
-    q: "会读取我的通讯录或相册吗？",
-    a: "仅在功能需要且你明确授权时访问（例如选择图片作为附件）。可在系统设置中随时关闭相关权限。",
-  },
-];
-
 export default function SupportPage() {
   return (
-    <>
-      <div className="container page-hero">
-        <h1 className="page-hero__title">用户支持</h1>
-        <p className="page-hero__lead muted">
-          下面是一些常见疑问。没找到答案时，欢迎发邮件联系我们——回复时间视工作量而定，请尽量写清环境与复现方式。
-        </p>
-      </div>
+    <LegalDocumentPage title="用户支持">
+      <p className={cn(ls.p, "mt-0")}>欢迎使用「心事匣」。</p>
+      <p className={ls.p}>
+        如果您在使用过程中遇到问题，或有任何建议与反馈，可以通过以下方式联系我们。
+      </p>
 
-      <section className="page-section">
-        <div className="container">
-          <h2 className="section-title__heading" style={{ marginBottom: "0.5rem" }}>
-            常见问题
-          </h2>
-          <FaqSection items={faqItems} />
-        </div>
-      </section>
+      <hr className={ls.hr} aria-hidden />
 
-      <section className="page-section">
-        <div className="container prose">
-          <h2>联系邮箱</h2>
-          <p>
-            <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
-          </p>
+      <h2 className={ls.h2}>一、常见问题</h2>
 
-          <h2>隐私与数据</h2>
-          <p>
-            关于收集范围、存储与安全，请阅读
-            <Link href="/privacy">《隐私政策》</Link>
-            。若应用内说明与本站不一致，以应用内最新版本为准。
-          </p>
+      <h3 className={ls.h3}>1. 无法正常使用应用怎么办？</h3>
+      <p className={ls.p}>请尝试以下操作：</p>
+      <ul className={ls.ul}>
+        <li>重启应用</li>
+        <li>检查网络连接</li>
+        <li>更新到最新版本</li>
+      </ul>
 
-          <h2>后续补充</h2>
-          <p>
-            账号、云同步、重置密码等流程会随产品上线逐步补充到本页；当前文案为通用说明，不代表现已开放全部能力。
-          </p>
-        </div>
-      </section>
-    </>
+      <hr className={ls.hr} aria-hidden />
+
+      <h3 className={ls.h3}>2. 数据会丢失吗？</h3>
+      <p className={ls.p}>
+        我们会尽力保障数据安全。
+        <br />
+        如您使用本地存储，请注意设备数据备份。
+      </p>
+
+      <hr className={ls.hr} aria-hidden />
+
+      <h3 className={ls.h3}>3. 是否支持多设备同步？</h3>
+      <p className={ls.p}>
+        该功能将根据版本逐步开放，请以应用内说明为准。
+      </p>
+
+      <hr className={ls.hr} aria-hidden />
+
+      <h3 className={ls.h3}>4. 是否收费？</h3>
+      <p className={ls.p}>
+        当前版本为基础功能体验，后续版本将根据功能规划调整。
+      </p>
+
+      <h2 className={ls.h2}>二、问题反馈</h2>
+      <p className={ls.p}>
+        如果您遇到问题，请通过以下方式联系我们：
+      </p>
+      <p className={ls.p}>
+        邮箱：
+        <a className={ls.link} href="mailto:pingce@dxyx6888.com">
+          pingce@dxyx6888.com
+        </a>
+      </p>
+      <p className={ls.p}>请在邮件中尽量提供：</p>
+      <ul className={ls.ul}>
+        <li>问题描述</li>
+        <li>设备型号</li>
+        <li>系统版本</li>
+        <li>应用版本</li>
+      </ul>
+
+      <h2 className={ls.h2}>三、响应时间</h2>
+      <p className={ls.p}>
+        我们通常会在 1-3 个工作日内回复您的邮件。
+      </p>
+
+      <h2 className={ls.h2}>四、建议与合作</h2>
+      <p className={ls.p}>
+        如果您有产品建议或合作意向，也欢迎通过邮箱联系我们。
+      </p>
+      <p className={ls.p}>
+        关于个人信息处理与数据安全，请参阅
+        <Link href="/privacy" className={cn(ls.link, "mx-0.5")}>
+          《隐私政策》
+        </Link>
+        。
+      </p>
+      <p className={ls.p}>感谢您的使用与支持。</p>
+    </LegalDocumentPage>
   );
 }

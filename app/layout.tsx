@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site_footer";
 import { siteConfig } from "@/lib/site_config";
 
 export const viewport: Viewport = {
-  themeColor: "#f7f4f1",
+  themeColor: "#f7f6f3",
   width: "device-width",
   initialScale: 1,
 };
@@ -46,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body>
+      <body className="min-h-screen bg-page font-sans text-ink antialiased">
         <div className="site-wrap">
           <SiteHeader />
           <main>{children}</main>

@@ -8,37 +8,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        page: "#f7f6f3",
-        "page-soft": "#f1ede7",
-        brand: "#8b7cff",
-        blush: "#ffb3c7",
-        mint: "#7bd3c5",
-        ink: "#2c2c2c",
-        sub: "#888888",
+        page: "#F7F4EF",
+        "page-soft": "#f0e9e0",
+        warm: "#D6A77A",
+        "warm-deep": "#c4956a",
+        blush: "#F4C6CC",
+        sage: "#CDE7D8",
+        mist: "#DCE8F9",
+        ink: "#3A3A3A",
+        sub: "#7A7A7A",
+        brand: "#D6A77A",
       },
       boxShadow: {
-        glass: "0 8px 30px rgba(0,0,0,0.05)",
-        lift: "0 14px 48px rgba(139,124,255,0.12)",
-        phone: "0 24px 64px rgba(44,44,44,0.08)",
-      },
-      keyframes: {
-        "orb-drift-a": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "50%": { transform: "translate(48px, -36px) scale(1.06)" },
-        },
-        "orb-drift-b": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "50%": { transform: "translate(-40px, 28px) scale(1.04)" },
-        },
-        "orb-drift-c": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "50%": { transform: "translate(32px, 44px) scale(1.05)" },
-        },
-      },
-      animation: {
-        "orb-a": "orb-drift-a 22s ease-in-out infinite",
-        "orb-b": "orb-drift-b 28s ease-in-out infinite",
-        "orb-c": "orb-drift-c 26s ease-in-out infinite",
+        paper: "0 8px 30px rgba(0,0,0,0.04)",
+        warm: "0 10px 28px rgba(214, 167, 122, 0.22)",
       },
       fontFamily: {
         sans: [

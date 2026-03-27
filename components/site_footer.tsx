@@ -23,15 +23,15 @@ const columns = [
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-auto border-t border-white/35 bg-gradient-to-b from-page to-page-soft">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.3fr_1fr_1fr] md:px-8">
+    <footer className="mt-auto border-t border-[rgba(214,167,122,0.1)] bg-gradient-to-b from-page to-page-soft">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.3fr_1fr_1fr] md:px-10 md:py-20">
         <div>
           <p className="text-base font-semibold text-ink">{siteConfig.name}</p>
-          <p className="mt-2 text-sm text-sub">{siteConfig.tagline}</p>
-          <p className="mt-4 text-sm leading-relaxed text-sub">
+          <p className="mt-3 text-sm leading-relaxed text-sub">{siteConfig.tagline}</p>
+          <p className="mt-5 text-sm leading-relaxed text-sub">
             {siteConfig.officialSiteNote}
           </p>
-          <p className="mt-4 text-sm text-ink/90">
+          <p className="mt-5 text-sm text-ink/90">
             <span className="text-sub">公司：</span>
             {siteConfig.companyName}
           </p>
@@ -39,7 +39,7 @@ export function SiteFooter() {
             <span className="text-sub">邮箱：</span>
             <a
               href={`mailto:${siteConfig.contactEmail}`}
-              className="text-brand no-underline hover:underline"
+              className="text-warm-deep no-underline hover:underline"
             >
               {siteConfig.contactEmail}
             </a>
@@ -50,12 +50,12 @@ export function SiteFooter() {
             <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-sub">
               {col.title}
             </p>
-            <ul className="mt-3 space-y-2 text-sm">
+            <ul className="mt-4 space-y-2.5 text-sm">
               {col.links.map((l) => (
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-ink/85 no-underline transition-colors hover:text-brand"
+                    className="text-ink/88 no-underline transition-colors hover:text-warm-deep"
                   >
                     {l.label}
                   </Link>
@@ -65,10 +65,13 @@ export function SiteFooter() {
           </div>
         ))}
       </div>
-      <div className="border-t border-white/30">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-xs text-sub md:flex-row md:items-center md:justify-between md:px-8">
+      <div className="border-t border-[rgba(214,167,122,0.08)]">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-7 text-xs text-sub md:flex-row md:items-center md:justify-between md:px-10">
           <p>
-            <Link href="/privacy" className="text-brand no-underline hover:underline">
+            <Link
+              href="/privacy"
+              className="text-warm-deep no-underline hover:underline"
+            >
               隐私政策
             </Link>
           </p>

@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
+import { LampSpotlight } from "@/components/lamp-spotlight";
 import { SiteHeader } from "@/components/site_header";
 import { SiteFooter } from "@/components/site_footer";
 import { siteConfig } from "@/lib/site_config";
 
 export const viewport: Viewport = {
-  themeColor: "#f7f6f3",
+  themeColor: "#F7F4EF",
   width: "device-width",
   initialScale: 1,
 };
@@ -47,7 +48,9 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className="min-h-screen bg-page font-sans text-ink antialiased">
-        <div className="site-wrap">
+        <div className="paper-backdrop pointer-events-none fixed inset-0 z-0" aria-hidden />
+        <LampSpotlight />
+        <div className="site-wrap relative z-10">
           <SiteHeader />
           <main>{children}</main>
           <SiteFooter />

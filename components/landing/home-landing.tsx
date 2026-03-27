@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { AmbientOrbs } from "./ambient-orbs";
@@ -161,50 +160,31 @@ export function HomeLanding() {
         </FadeIn>
       </section>
 
-      {/* Product horizontal scroll */}
+      {/* 产品展示：纯文字 */}
       <section className="px-5 py-12 md:px-8 md:py-16">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <h2 className="text-2xl font-semibold text-ink md:text-3xl">产品展示</h2>
             <p className="mt-2 text-sub">在界面里，感受安静与秩序。</p>
           </FadeIn>
-          <div className="relative mt-10">
-            <div className="scrollbar-hide flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 pt-2 [-webkit-overflow-scrolling:touch]">
-              {screenshotShots.map((shot, i) => (
-                <FadeIn key={shot.src} delay={Math.min(i * 0.06, 0.3)} className="shrink-0 snap-center">
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    transition={{ type: "spring", stiffness: 380, damping: 22 }}
-                    className="w-[min(260px,78vw)]"
-                  >
-                    <div
-                      className="overflow-hidden rounded-[30px] border border-white/40 bg-white/50 shadow-phone backdrop-blur-md"
-                    >
-                      <div className="relative aspect-[390/844] w-full">
-                        <Image
-                          src={shot.src}
-                          alt={shot.alt}
-                          fill
-                          sizes="(max-width:768px) 78vw, 260px"
-                          className="object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
-                    <p className="mt-3 px-1 text-center text-sm text-sub">
-                      {shot.caption}
-                    </p>
-                  </motion.div>
-                </FadeIn>
+          <FadeIn delay={0.06} className="mt-10">
+            <ul className={`${glassCard} divide-y divide-white/30 px-8 py-2 md:px-10`}>
+              {screenshotShots.map((shot) => (
+                <li
+                  key={shot.alt}
+                  className="py-5 text-[15px] leading-relaxed text-sub md:py-5"
+                >
+                  {shot.caption}
+                </li>
               ))}
-            </div>
-          </div>
-          <p className="mt-6 text-center">
+            </ul>
+          </FadeIn>
+          <p className="mt-8 text-center md:text-left">
             <Link
               href="/screenshots"
               className="text-sm text-brand/90 underline-offset-4 hover:underline"
             >
-              查看全部界面 →
+              需要看图时，可前往产品截图页 →
             </Link>
           </p>
         </div>

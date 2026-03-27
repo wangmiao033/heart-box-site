@@ -35,6 +35,11 @@ npm run build
 - `styles/globals.css` — 全局样式与设计 token
 - `scripts/write-placeholders.mjs` — 生成本地占位 PNG（可选）
 
+## 更新日志
+
+仓库变更记录见根目录 **[CHANGELOG.md](./CHANGELOG.md)**（如何维护说明也在该文件内）。  
+下载页展示的示例版本列表数据在 **`lib/data/changelog.ts`**，需与真实发版同步时请改该文件及文案。
+
 ## 与 Flutter 主工程的关系
 
 本目录为**独立官网仓库**，与 App 主仓库分离；仅通过你手动替换截图与文案保持品牌一致。

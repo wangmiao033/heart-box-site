@@ -6,19 +6,19 @@
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://heart-box-site.vercel.app/features</loc>
+    <loc>https://heart-box-site.vercel.app/product</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://heart-box-site.vercel.app/screenshots</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://heart-box-site.vercel.app/download</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://heart-box-site.vercel.app/notes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://heart-box-site.vercel.app/privacy</loc>

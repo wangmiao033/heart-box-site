@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
-import { LampSpotlight } from "@/components/lamp-spotlight";
-import { SiteHeader } from "@/components/site_header";
-import { SiteFooter } from "@/components/site_footer";
+import { LampCursorGlow } from "@/components/ui/lamp-cursor-glow";
+import { SoftBlobBackground } from "@/components/ui/soft-blob-background";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/lib/site_config";
 
 export const viewport: Viewport = {
-  themeColor: "#F7F4EF",
+  themeColor: "#F7F3EF",
   width: "device-width",
   initialScale: 1,
 };
@@ -48,8 +49,8 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className="min-h-screen bg-page font-sans text-ink antialiased">
-        <div className="paper-backdrop pointer-events-none fixed inset-0 z-0" aria-hidden />
-        <LampSpotlight />
+        <SoftBlobBackground />
+        <LampCursorGlow />
         <div className="site-wrap relative z-10">
           <SiteHeader />
           <main>{children}</main>

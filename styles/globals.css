@@ -6,32 +6,19 @@
   html {
     scroll-behavior: smooth;
   }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
   body {
     @apply m-0 min-h-screen font-sans text-ink antialiased;
-    background-color: #f7f4ef;
+    background-color: #f7f3ef;
   }
-}
-
-/* 纸质氛围底：米色 + 淡粉 / 淡绿轻混合 */
-.paper-backdrop {
-  background-color: #f7f4ef;
-  background-image:
-    radial-gradient(
-      ellipse 110% 65% at 92% -5%,
-      rgba(244, 198, 204, 0.16),
-      transparent 52%
-    ),
-    radial-gradient(
-      ellipse 90% 55% at -5% 105%,
-      rgba(205, 231, 216, 0.14),
-      transparent 48%
-    ),
-    radial-gradient(
-      ellipse 70% 40% at 50% 100%,
-      rgba(220, 232, 249, 0.1),
-      transparent 50%
-    ),
-    linear-gradient(180deg, #f7f4ef 0%, #faf7f2 55%, #f5f0ea 100%);
+  *:focus-visible {
+    outline: 2px solid rgba(231, 191, 167, 0.75);
+    outline-offset: 3px;
+  }
 }
 
 @layer utilities {
@@ -42,18 +29,31 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  /* 极浅纸张横线（用于笔记区） */
+  .bg-paper-lines {
+    background-image: repeating-linear-gradient(
+      transparent 0,
+      transparent 26px,
+      rgba(232, 222, 214, 0.35) 26px,
+      rgba(232, 222, 214, 0.35) 27px
+    );
+  }
+  /* 极浅噪点感（叠加层） */
+  .texture-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
 }
 
-/* —— legacy: inner pages (features, download, etc.) —— */
+/* —— legacy: 内页（隐私、支持等） —— */
 :root {
-  --bg: #f7f4ef;
+  --bg: #f7f3ef;
   --bg-card: rgba(255, 255, 255, 0.7);
-  --text: #3a3a3a;
-  --text-muted: #7a7a7a;
-  --line: rgba(255, 255, 255, 0.55);
+  --text: #3e3a37;
+  --text-muted: #7d746d;
+  --line: #e8ded6;
   --mist: #cde7d8;
   --mist-deep: #d6a77a;
-  --lavender: rgba(220, 232, 249, 0.45);
+  --lavender: rgba(220, 232, 249, 0.4);
   --radius: 16px;
   --radius-sm: 14px;
   --shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
@@ -129,27 +129,27 @@ main {
 }
 
 .btn--primary {
-  background: #d6a77a;
-  color: #fff;
-  border-color: rgba(214, 167, 122, 0.35);
-  box-shadow: 0 8px 24px rgba(214, 167, 122, 0.2);
+  background: #e7bfa7;
+  color: #3e3a37;
+  border-color: rgba(231, 191, 167, 0.45);
+  box-shadow: 0 8px 24px rgba(62, 58, 55, 0.06);
 }
 
 .btn--primary:hover {
-  background: #c4956a;
-  color: #fff;
+  background: #d9c6b8;
+  color: #3e3a37;
 }
 
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.65);
   color: var(--text);
-  border-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(12px);
+  border-color: var(--line);
+  backdrop-filter: blur(8px);
 }
 
 .btn--ghost:hover {
-  border-color: rgba(214, 167, 122, 0.35);
-  color: #b8895a;
+  border-color: rgba(231, 191, 167, 0.5);
+  color: #5c524a;
 }
 
 .section-title {
@@ -167,7 +167,7 @@ main {
   font-size: 0.82rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #c4956a;
+  color: #b8997f;
   margin: 0 0 0.5rem;
 }
 
@@ -232,30 +232,26 @@ main {
 .feature-card {
   padding: 1.35rem 1.4rem;
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
 }
 
 .feature-card--mist {
-  border-color: rgba(214, 167, 122, 0.2);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, #faf5ef 100%);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, #faf7f4 100%);
 }
 
 .feature-card--lavender {
-  border-color: rgba(244, 198, 204, 0.35);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, #fff6f7 100%);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, #fff8f6 100%);
 }
 
 .feature-card--sage {
-  border-color: rgba(205, 231, 216, 0.45);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, #f4faf7 100%);
 }
 
 .feature-card--blush {
-  border-color: rgba(244, 198, 204, 0.4);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, #fff8f6 100%);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, #fdf5f6 100%);
 }
 
 .feature-card__title {
@@ -296,8 +292,8 @@ main {
 .screenshot-gallery__frame {
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: #f1ede7;
+  border: 1px solid var(--line);
+  background: #faf7f4;
   box-shadow: var(--shadow);
 }
 
@@ -323,9 +319,9 @@ main {
   text-align: center;
   padding: 2.25rem 1.5rem;
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(20px);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
 }
 
@@ -353,7 +349,7 @@ main {
 
 .faq__item {
   padding: 1.25rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(232, 222, 214, 0.8);
 }
 
 .faq__item:first-child {
@@ -418,14 +414,14 @@ main {
 }
 
 .prose a {
-  color: #b8895a;
+  color: #a88268;
 }
 
 .prose .note {
   padding: 0.85rem 1rem;
   border-radius: var(--radius-sm);
   background: rgba(255, 248, 240, 0.95);
-  border: 1px solid rgba(214, 167, 122, 0.2);
+  border: 1px solid rgba(231, 191, 167, 0.25);
   font-size: 0.92rem;
   margin: 1.25rem 0;
 }

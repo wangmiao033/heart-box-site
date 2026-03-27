@@ -61,6 +61,8 @@
 	</array>
 	<key>NSFaceIDUsageDescription</key>
 	<string>用于解锁心事匣，保护你的记录隐私</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>用于在设置中选择仅在本地保存的头像，不会上传</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

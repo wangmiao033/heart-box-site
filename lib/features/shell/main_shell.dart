@@ -1,48 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/theme/app_tokens.dart';
+import '../../widgets/app_atmosphere_background.dart';
+import '../../widgets/app_bottom_nav.dart';
+import '../../widgets/app_fab_button.dart';
+import '../../widgets/app_layout.dart';
+
 class MainShell extends StatelessWidget {
   const MainShell({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
-  static const _destinations = [
-    NavigationDestination(
-      icon: Icon(Icons.home_outlined),
-      selectedIcon: Icon(Icons.home_rounded),
-      label: '首页',
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.calendar_month_outlined),
-      selectedIcon: Icon(Icons.calendar_month),
-      label: '日历',
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.auto_graph_outlined),
-      selectedIcon: Icon(Icons.auto_graph),
-      label: '回顾',
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.settings_outlined),
-      selectedIcon: Icon(Icons.settings),
-      label: '设置',
-    ),
-  ];
+  Widget? _buildFabGroup(BuildContext context) {
+    if (navigationShell.currentIndex != 0) return null;
+    return AppFabButton(onPressed: () => context.push('/compose'));
+  }
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+
     return Scaffold(
-      body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
-        onDestinationSelected: (i) {
-          navigationShell.goBranch(
-            i,
-            initialLocation: i == navigationShell.currentIndex,
-          );
-        },
-        destinations: _destinations,
+      backgroundColor: Colors.transparent,
+      extendBody: true,
+      // 透明以便透出底层氛围；子页全屏路由仍用主题色兜底。
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          AppAtmosphereBackground(brightness: brightness),
+          SafeArea(
+            bottom: false,
+            child: SizedBox.expand(
+              child: AppContentWidth(
+                child: navigationShell,
+              ),
+            ),
+          ),
+        ],
       ),
+      bottomNavigationBar: Align(
+        alignment: Alignment.bottomCenter,
+        heightFactor: 1,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: AppLayout.maxContentWidth,
+          ),
+          child: AppBottomNav(
+            currentIndex: navigationShell.currentIndex,
+            onSelect: (i) {
+              navigationShell.goBranch(
+                i,
+                initialLocation: i == navigationShell.currentIndex,
+              );
+            },
+          ),
+        ),
+      ),
+      floatingActionButton: _buildFabGroup(context),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

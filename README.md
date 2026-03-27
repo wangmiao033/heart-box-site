@@ -45,6 +45,19 @@ flutter build web
 
 产物在 **`build/web/`**，可用任意静态服务器打开该目录做联调（不要用 `file://` 直接打开 `index.html`，容易有路径问题）。
 
+#### 若出现白屏：先确认 `build` 有没有真正成功
+
+终端里若出现 **`Got socket error trying to find package sqflite at https://pub.dev`**、**`Failed to update packages`**，说明 **`flutter build web` 时依赖没拉全**，`build/web` 可能不完整 → **页面白、DevTools Console 一条红错**。
+
+**解决：** 构建前务必设置镜像再 `pub get`（与上文「准备」一致），或使用一键脚本（自动设镜像并依次执行 get / build / 本地服务）：
+
+```powershell
+cd H:\heart-box-app
+.\tool\build_and_serve_web.ps1
+```
+
+成功后浏览器打开 **`http://127.0.0.1:8082`**。不要用 `view-source:`；若仍异常，按 F12 看 **Console** 全文。
+
 ### 4. Web 上测试时要注意
 
 | 能力 | Web 说明 |

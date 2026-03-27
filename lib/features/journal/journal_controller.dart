@@ -10,6 +10,8 @@ class JournalController extends ChangeNotifier {
 
   List<JournalEntry> entries = [];
   String searchQuery = '';
+  /// 精确匹配标签名（不区分大小写），与 [searchQuery] 可同时生效。
+  String? filterTag;
   bool loading = false;
   String? error;
 
@@ -18,7 +20,10 @@ class JournalController extends ChangeNotifier {
     error = null;
     notifyListeners();
     try {
-      entries = await _repo.listRecent(query: searchQuery);
+      entries = await _repo.listRecent(
+        query: searchQuery,
+        tagFilter: filterTag,
+      );
     } catch (e) {
       error = e.toString();
     } finally {
@@ -32,6 +37,32 @@ class JournalController extends ChangeNotifier {
     searchQuery = q;
     notifyListeners();
     refresh();
+  }
+
+  /// 设为 null 或空字符串则清除标签筛选。
+  void setFilterTag(String? tag) {
+    final t = tag?.trim();
+    final next = (t == null || t.isEmpty) ? null : t;
+    if (filterTag == next) return;
+    filterTag = next;
+    notifyListeners();
+    refresh();
+  }
+
+  void clearFilters() {
+    var changed = false;
+    if (searchQuery.isNotEmpty) {
+      searchQuery = '';
+      changed = true;
+    }
+    if (filterTag != null) {
+      filterTag = null;
+      changed = true;
+    }
+    if (changed) {
+      notifyListeners();
+      refresh();
+    }
   }
 
   Future<void> deleteEntry(int id) async {

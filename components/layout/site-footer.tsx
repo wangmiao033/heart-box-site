@@ -17,7 +17,7 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-auto border-t border-line bg-page-elevated/50">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.2fr_1fr_1fr] md:px-10 md:py-20">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:gap-11 sm:px-5 md:grid-cols-[1.2fr_1fr_1fr] md:gap-12 md:px-9 md:py-16 lg:px-10">
         <div>
           <p className="text-base font-semibold text-ink">{siteConfig.name}</p>
           <p className="mt-3 text-sm leading-relaxed text-sub">
@@ -76,7 +76,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-line/70">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-xs text-sub md:flex-row md:items-center md:justify-between md:px-10">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-sub sm:px-5 md:flex-row md:items-center md:justify-between md:px-9 md:py-6 lg:px-10">
           <p>
             © {year} {siteConfig.companyName}
           </p>

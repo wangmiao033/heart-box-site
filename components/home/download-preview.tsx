@@ -19,7 +19,7 @@ export function DownloadPreview() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-14 md:py-20 lg:py-24">
       <Container>
         <FadeIn>
           <SectionTitle
@@ -29,28 +29,28 @@ export function DownloadPreview() {
             align="center"
           />
         </FadeIn>
-        <div className="mt-14 grid gap-6 md:grid-cols-3 md:gap-7">
+        <div className="mt-9 grid gap-3.5 sm:mt-10 md:grid-cols-3 md:gap-4 lg:mt-11 lg:gap-5">
           {platformCards.map((p, i) => {
             const Icon = icons[p.icon];
             return (
               <FadeIn key={p.id} delay={i * 0.05}>
                 <motion.div
-                  className="flex h-full flex-col rounded-card-md border border-line/95 bg-card p-8 shadow-paper transition-shadow duration-500 ease-soft hover:shadow-paper-hover"
+                  className="flex h-full flex-col rounded-card-md border border-line/95 bg-card p-5 shadow-paper transition-shadow duration-500 ease-soft hover:shadow-paper-hover sm:p-6 md:p-7"
                   whileHover={reduceMotion ? undefined : { y: -2 }}
                   transition={{ type: "spring", stiffness: 400, damping: 28 }}
                 >
-                  <Icon className="h-8 w-8 text-accent" strokeWidth={1.25} />
-                  <p className="mt-4 text-xs font-medium uppercase tracking-widest text-sub">
+                  <Icon className="h-7 w-7 text-accent sm:h-8 sm:w-8" strokeWidth={1.25} />
+                  <p className="mt-3 text-[11px] font-medium uppercase tracking-widest text-sub sm:mt-4 sm:text-xs">
                     {p.name}
                   </p>
                   <p
                     className={cn(
-                      "mt-2 inline-flex w-fit rounded-full border border-line bg-page-elevated px-3 py-1 text-xs text-ink",
+                      "mt-1.5 inline-flex w-fit rounded-full border border-line bg-page-elevated px-2.5 py-0.5 text-[11px] text-ink sm:mt-2 sm:px-3 sm:py-1 sm:text-xs",
                     )}
                   >
                     {p.status}
                   </p>
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-sub">
+                  <p className="mt-3 flex-1 text-[13px] leading-relaxed text-sub sm:mt-4 sm:text-sm">
                     {p.description}
                   </p>
                 </motion.div>
@@ -58,10 +58,10 @@ export function DownloadPreview() {
             );
           })}
         </div>
-        <FadeIn delay={0.12} className="mt-12 text-center">
+        <FadeIn delay={0.1} className="mt-9 text-center sm:mt-10">
           <Link
             href="/download"
-            className="rounded-md text-sm font-medium text-ink underline-offset-[6px] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-md text-sm font-medium text-ink underline-offset-[6px] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             查看完整下载页 →
           </Link>

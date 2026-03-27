@@ -23,18 +23,20 @@ export function SectionTitle({
       )}
     >
       {eyebrow ? (
-        <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-sub">
+        <p className="mb-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-sub md:mb-2 md:text-xs">
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-2xl font-semibold leading-snug text-ink md:text-[1.65rem]">
+      <h2 className="text-xl font-semibold leading-snug tracking-tight text-ink sm:text-[1.35rem] md:text-[1.55rem] lg:text-[1.65rem]">
         {title}
       </h2>
       {subtitle ? (
         <p
           className={cn(
-            "mt-4 text-[15px] leading-relaxed text-sub",
-            align === "center" && "mx-auto max-w-lg",
+            "mt-3 text-[14px] leading-relaxed text-sub sm:text-[15px] md:mt-3.5",
+            align === "center" &&
+              "mx-auto max-w-[min(100%,36ch)] sm:max-w-md md:max-w-lg",
+            align === "left" && "max-w-prose",
           )}
         >
           {subtitle}

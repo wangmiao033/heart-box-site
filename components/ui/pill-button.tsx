@@ -11,7 +11,7 @@ type Base = {
 type LinkProps = Base & { href: string; external?: boolean };
 
 const base =
-  "inline-flex min-h-[48px] items-center justify-center rounded-full px-8 py-3 text-[15px] font-medium tracking-tight transition-[transform,box-shadow,background,border-color] duration-300 ease-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "inline-flex min-h-[44px] items-center justify-center rounded-full px-6 py-2.5 text-[14px] font-medium tracking-tight transition-[transform,box-shadow,background,border-color] duration-300 ease-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:min-h-[46px] md:px-7 md:py-2.5 md:text-[15px] lg:min-h-[48px] lg:px-8 lg:py-3";
 
 export function PillButton(props: LinkProps) {
   const { href, children, className, variant = "primary", external } = props;

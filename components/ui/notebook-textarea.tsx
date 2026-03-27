@@ -28,7 +28,7 @@ export const NotebookTextarea = forwardRef<HTMLTextAreaElement, Props>(
         <textarea
           ref={ref}
           className={cn(
-            "relative z-[1] min-h-[132px] w-full resize-y bg-transparent px-4 py-3.5 text-[15px] leading-[1.75] text-ink",
+            "relative z-[1] min-h-[120px] w-full resize-y bg-transparent px-3.5 py-3 text-[14px] leading-[1.72] text-ink sm:min-h-[128px] sm:px-4 sm:py-3.5 sm:text-[15px] sm:leading-[1.75] md:min-h-[132px]",
             "placeholder:text-sub/55 placeholder:transition-opacity",
             "outline-none",
             className,

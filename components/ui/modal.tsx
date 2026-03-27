@@ -43,7 +43,13 @@ export function Modal({ open, onClose, title, children, className }: Props) {
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-5"
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          style={{
+            paddingTop: "max(1rem, env(safe-area-inset-top, 0px))",
+            paddingBottom: "max(1rem, env(safe-area-inset-bottom, 0px))",
+            paddingLeft: "max(1rem, env(safe-area-inset-left, 0px))",
+            paddingRight: "max(1rem, env(safe-area-inset-right, 0px))",
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -60,7 +66,7 @@ export function Modal({ open, onClose, title, children, className }: Props) {
             aria-modal="true"
             aria-labelledby={title ? "modal-title" : undefined}
             className={cn(
-              "relative z-10 w-full max-w-md overflow-hidden rounded-card border border-line/90 bg-card shadow-paper-hover",
+              "relative z-10 max-h-[min(92vh,720px)] w-full max-w-md overflow-y-auto overflow-x-hidden rounded-[20px] border border-line/90 bg-card shadow-paper-hover sm:rounded-card",
               "before:pointer-events-none before:absolute before:inset-0 before:rounded-card before:bg-gradient-to-b before:from-white/40 before:to-transparent before:opacity-90",
               className,
             )}
@@ -77,11 +83,11 @@ export function Modal({ open, onClose, title, children, className }: Props) {
             }
             transition={t}
           >
-            <div className="relative p-8 pt-9">
+            <div className="relative p-5 pt-8 sm:p-7 sm:pt-9 md:p-8">
               <button
                 type="button"
                 onClick={onClose}
-                className="absolute right-3 top-3 rounded-control p-2 text-sub transition-colors hover:bg-page-elevated hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className="absolute right-2 top-2 z-[1] min-h-[44px] min-w-[44px] rounded-control p-2 text-sub transition-colors hover:bg-page-elevated hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-3 sm:top-3"
                 aria-label="关闭"
               >
                 <X className="h-5 w-5" strokeWidth={1.5} />
@@ -97,7 +103,7 @@ export function Modal({ open, onClose, title, children, className }: Props) {
               <div
                 className={cn(
                   "relative",
-                  title ? "mt-6 border-t border-line/50 pt-6" : "pt-1",
+                  title ? "mt-5 border-t border-line/50 pt-5 sm:mt-6 sm:pt-6" : "pt-1",
                 )}
               >
                 {children}

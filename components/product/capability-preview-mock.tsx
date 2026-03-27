@@ -10,7 +10,7 @@ export function CapabilityPreviewMock({ variant, className }: Props) {
   return (
     <div
       className={cn(
-        "relative min-h-[200px] w-full overflow-hidden rounded-card-md border border-line/90 bg-[#FDFBF8] shadow-paper",
+        "relative min-h-[148px] w-full overflow-hidden rounded-card-md border border-line/90 bg-[#FDFBF8] shadow-paper sm:min-h-[168px] md:min-h-[188px] lg:min-h-[200px]",
         "before:pointer-events-none before:absolute before:inset-0 before:bg-paper-lines before:opacity-35",
         className,
       )}
@@ -19,7 +19,7 @@ export function CapabilityPreviewMock({ variant, className }: Props) {
         className="pointer-events-none absolute inset-0 texture-noise opacity-30 mix-blend-multiply"
         aria-hidden
       />
-      <div className="relative flex h-full flex-col p-5">
+      <div className="relative flex h-full flex-col p-4 sm:p-5">
         {v === 0 ? (
           <>
             <div className="mb-3 flex items-center gap-2">

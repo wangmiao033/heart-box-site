@@ -55,12 +55,12 @@ export function FaqList({
   );
 
   return (
-    <section className="py-20 md:pb-32 md:pt-12">
+    <section className="py-14 md:pb-24 md:pt-10 lg:pb-28">
       <Container>
         <FadeIn>
           <SectionTitle eyebrow={eyebrow} title={title} align="center" />
         </FadeIn>
-        <div className="mx-auto mt-14 max-w-2xl">
+        <div className="mx-auto mt-9 max-w-2xl sm:mt-10 md:mt-11">
           {items.map((item, i) => {
             const isOpen = open === i;
             const panelId = `${baseId}-panel-${i}`;
@@ -80,12 +80,12 @@ export function FaqList({
                       onClick={() => toggle(i)}
                       onKeyDown={(e) => onKeyDown(e, i)}
                       className={cn(
-                        "flex w-full items-start justify-between gap-4 py-5 text-left transition-colors duration-200",
+                        "flex min-h-[52px] w-full items-start justify-between gap-3 py-3.5 text-left transition-colors duration-200 sm:min-h-[56px] sm:gap-4 sm:py-4 md:py-5",
                         "hover:text-ink/90",
                         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
                       )}
                     >
-                      <span className="text-[15px] font-semibold leading-snug text-ink">
+                      <span className="text-[14px] font-semibold leading-snug text-ink sm:text-[15px]">
                         {item.q}
                       </span>
                       <ChevronDown
@@ -117,7 +117,7 @@ export function FaqList({
                         }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-6 pr-2 text-sm leading-[1.75] text-sub md:pr-10">
+                        <div className="pb-4 pr-1 text-[13px] leading-[1.75] text-sub sm:pb-5 sm:pr-2 sm:text-sm md:pb-6 md:pr-8">
                           {item.a}
                         </div>
                       </motion.div>

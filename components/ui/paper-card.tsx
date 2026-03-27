@@ -9,9 +9,9 @@ type Props = {
 };
 
 const padMap = {
-  sm: "p-5",
-  md: "p-7",
-  lg: "p-9 md:p-10",
+  sm: "p-4 md:p-5",
+  md: "p-5 md:p-6 lg:p-7",
+  lg: "p-5 md:p-7 lg:p-9",
 };
 
 export function PaperCard({
